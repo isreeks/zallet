@@ -1,0 +1,36 @@
+{
+  "name": "@extension/popup",
+  "version": "0.2.2",
+  "description": "chrome extension popup",
+  "private": true,
+  "sideEffects": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "pnpm run clean&& pnpm type-check && vite build",
+    "build:watch": "cross-env __DEV__=true vite build --mode development",
+    "dev": "pnpm build:watch",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*",
+    "@types/node": "^20.14.10",
+    "react-router-dom": "^6.26.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "@extension/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@extension/tailwindcss-config": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}
